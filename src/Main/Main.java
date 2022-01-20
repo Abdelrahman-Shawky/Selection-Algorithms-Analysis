@@ -9,7 +9,6 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-import javax.swing.*;
 import java.util.*;
 
 public class Main extends Application {
@@ -54,8 +53,6 @@ public class Main extends Application {
         naiveMethodGraph = new XYChart.Series<>();
         naiveMethodGraph.setName("Naive Method");
 
-//        Random rd = new Random(); // creating Random object
-
         for (int size = 10; size <=MAX_ARRAY; ) {
             ArrayList<Integer> arrList = new ArrayList<>(size);
 
@@ -71,10 +68,7 @@ public class Main extends Application {
             long startTime;
             long[] timeElapsed = new long[AVERAGE_RUNS];
             long timeElapsedSum = 0;
-            long timeElapsedAverage;
-            String methodName = "";
 
-//            System.out.println(arrList);
             //Randomized Divide and Conquer
             for(int j=0; j<AVERAGE_RUNS; j++) {
                 ArrayList<Integer> arrayUnsorted = (ArrayList<Integer>) arrList.clone();
@@ -85,10 +79,6 @@ public class Main extends Application {
                 timeElapsedSum+=timeElapsed[j];
             }
             output( "Randomized Divide and Conquer", size, timeElapsedSum,1);
-//            methodName = "Randomized Divide and Conquer";
-//            timeElapsedAverage = timeElapsedSum/AVERAGE_RUNS;
-//            System.out.println("Avergae execution time of " + size + " elements using " + methodName + " in milliseconds: " + timeElapsedAverage);
-//            randomizedDivideConquerGraph.getData().add(new XYChart.Data<String, Number>(String.valueOf(size), timeElapsedAverage));
             timeElapsedSum = 0;
 
             //Median of Medians
@@ -101,10 +91,6 @@ public class Main extends Application {
                 timeElapsedSum+=timeElapsed[i];
             }
             output("Median Of Medians", size, timeElapsedSum,2);
-//            methodName = "Median Of Medians";
-//            timeElapsedAverage = timeElapsedSum/AVERAGE_RUNS;
-//            System.out.println("Avergae execution time of " + size + " elements using " + methodName + " in milliseconds: " + timeElapsedAverage);
-//            medianOfMediansGraph.getData().add(new XYChart.Data<String, Number>(String.valueOf(size), timeElapsedAverage));
             timeElapsedSum = 0;
 
             //Naive Method
@@ -117,12 +103,6 @@ public class Main extends Application {
                 timeElapsedSum+=timeElapsed[j];
             }
             output("Naive Method", size, timeElapsedSum,3);
-//            methodName = "Naive Method";
-//            timeElapsedAverage = timeElapsedSum/AVERAGE_RUNS;
-//            System.out.println("Avergae execution time of " + size + " elements using " + methodName + " in milliseconds: " + timeElapsedAverage);
-//            naiveMethodGraph.getData().add(new XYChart.Data<String, Number>(String.valueOf(size), timeElapsedAverage));
-
-
 
                 if (size >= 100000 && size < 1000000)
                 size += 100000;
@@ -156,7 +136,6 @@ public class Main extends Application {
         if(size % PARTITION_SIZE != 0){
             numPartitions++;
         }
-//        System.out.println(arr);
 
         List<Integer>[] partition = new ArrayList[numPartitions];
         ArrayList<Integer> medians = new ArrayList<>(numPartitions);
@@ -174,10 +153,7 @@ public class Main extends Application {
             Collections.sort(partition[i]);
             medians.add(partition[i].get(partition[i].size()/2));
 
-//            System.out.println(partition[i]);
         }
-//            if(partition[numPartitions-1] % partitionSize !=0)
-//        System.out.println(medians);
         int pivot;
         //Get median of medians list
         if(medians.size() <= 5){
@@ -187,11 +163,7 @@ public class Main extends Application {
         else {
             pivot = medianOfMedians(medians, medians.size()/2);
         }
-//        System.out.println(arr);
-//        System.out.println(pivot);
-//        System.out.println(pivot);
         //Partition
-//        int kth = medianOfMediansPartition(arr, 0, arr.size()-1, pivot);
         ArrayList<Integer> low = new ArrayList<>();
         ArrayList<Integer> high = new ArrayList<>();
         //Divide List into two lists (list < pivot) && (list > pivot)
@@ -214,7 +186,6 @@ public class Main extends Application {
             return medianOfMedians(high, ith-kth-1);
         }
         else{
-//            System.out.println(pivot);
             return pivot;
         }
     }
@@ -226,7 +197,6 @@ public class Main extends Application {
             return arr.get(low);
         int rank = randomPartition(arr, low, high);
         int kth = rank - low + 1;
-//        System.out.println(kth+ low -1);
 
         if(ith == kth) {
             return arr.get(rank);
@@ -261,9 +231,7 @@ public class Main extends Application {
     public static void swap(ArrayList<Integer> arr, int i, int j)
     {
         int temp = arr.get(i);
-//        arr[i] = arr[j];
         arr.set(i,arr.get(j));
-//        arr[j] = temp;
         arr.set(j,temp);
     }
 

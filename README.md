@@ -1,6 +1,6 @@
 # Selection Algorithm Analysis
 Java program that simulates different selection algorithms, analyzing their performance and running times in computing median position. Uses JavaFX to visualize the running times for a more vivid comparison.
-Analyzes array size ranging from 10 to 10^7.
+Array size ranging from 10 to 10<sup>7</sup>.
 
 ## What Is Selection
 Selecting the ith smallest of n elements (the element with rank i)
@@ -45,5 +45,5 @@ Selecting the ith smallest of n elements (the element with rank i)
 - Randomization contributing to better performance
 - How less efficient a naive approach would be
 - They produce a linear expected time best case
-- Still worst-case could reach O(n^2)
+- Still worst-case could reach O(n<sup>2</sup>)
 
